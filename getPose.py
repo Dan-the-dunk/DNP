@@ -5,12 +5,9 @@ from configparser import ConfigParser
 from confluent_kafka import Consumer, Producer, OFFSET_BEGINNING, OFFSET_END
 import cv2
 import numpy as np
-from ultralytics import YOLO
-from PIL import Image
 import json
 
 from mmpose.apis import inference_topdown
-from mmengine.registry import init_default_scope
 from mmpose.apis import init_model as init_pose_estimator
 from mmpose.apis import visualize
 from utils import visualize_bbox_and_keypoints
