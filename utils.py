@@ -17,6 +17,5 @@ def visualize_bbox_and_keypoints(img, bboxes, keypoints):
         cv2.rectangle(img, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0, 0, 255), 2)
     for keypoint in keypoints:
         for i in range(0, len(keypoint)):
-            print(f"Keypoint: {keypoint[i]}")
             cv2.circle(img, ((keypoint[i])), 3, (0, 255, 0), -1)
     return img
