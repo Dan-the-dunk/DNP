@@ -23,7 +23,7 @@ class PoseDataSample(BaseDataElement):
     Examples:
         >>> import torch
         >>> from mmengine.structures import InstanceData, PixelData
-        >>> from mypose.structures import PoseDataSample
+        >>> from mmpose.structures import PoseDataSample
 
         >>> pose_meta = dict(img_shape=(800, 1216),
         ...                  crop_size=(256, 192),

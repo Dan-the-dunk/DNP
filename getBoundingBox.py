@@ -7,12 +7,14 @@ from PIL import Image
 import json
 import matplotlib.pyplot as plt
 
-from mmpose.evaluation.functional import nms
 from ultralytics import YOLO
 import cv2
 import numpy as np
 
 from boxmot import OCSORT
+from config import *
+
+
 
 
 def serialize_tensor(bbox_list, offset):
@@ -59,13 +61,25 @@ def predict_bbox(image_cv2, detector, tracker):
     return results
 
 class BoundingBoxProcess:
-    def __init__(self, topic, config):
-        self.producer = Producer(config)
+    def __init__(self, topic, bootstrap_servers=BOOTSTRAP_SERVERS):
         self.topic = topic
-        self.consumer = Consumer(config)
+        producer_config = {
+            'bootstrap.servers': bootstrap_servers
+        }
+
+        consumer_config = {
+            'bootstrap.servers': bootstrap_servers,
+            'group.id': 'bbox',
+            'auto.offset.reset': 'earliest'
+        }
+
+        self.producer = Producer(producer_config)
+
+        self.consumer = Consumer(consumer_config)
         self.consumer.subscribe([topic], on_assign=self.reset_offset)
         self.bbox = None
         self.msg_offset = None
+        #
         self.tracker = OCSORT()
         self.detector = YOLO('yolov8n.pt')
 
@@ -73,7 +87,7 @@ class BoundingBoxProcess:
     def reset_offset(self, consumer, partitions):
         # Only call when a consumer first subscribe to a topic
         print(f"Length of partitions: {len(partitions)}")
-        if args.reset:
+        if args_reset:
             for p in partitions:
                 p.offset = OFFSET_BEGINNING
             consumer.assign(partitions)
@@ -136,7 +150,7 @@ class BoundingBoxProcess:
 
 if __name__ == '__main__':
     # Parse the command line.
-    parser = ArgumentParser()
+    """parser = ArgumentParser()
     parser.add_argument('config_file', type=FileType('r'))
     parser.add_argument('--reset', action='store_true')
     args = parser.parse_args()
@@ -146,11 +160,13 @@ if __name__ == '__main__':
     config_parser = ConfigParser()
     config_parser.read_file(args.config_file)
     config = dict(config_parser['default'])
-    config.update(config_parser['consumer'])
+    config.update(config_parser['consumer'])"""
 
     # Create BoundingBoxProcess instance
- 
-    bbox = BoundingBoxProcess("frames", config)
+    
+    args_reset = False
+
+    bbox = BoundingBoxProcess("frames")
     bbox.getBoundingBox()
 
    

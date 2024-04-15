@@ -2,7 +2,7 @@
 from copy import deepcopy
 from typing import Union
 
-import cv2
+import mmcv
 import numpy as np
 from mmengine.structures import InstanceData
 
@@ -55,15 +55,9 @@ def visualize(
         visualizer.set_dataset_meta(metainfo, skeleton_style=skeleton_style)
 
     if isinstance(img, str):
-
-        # Read the img
-        img = cv2.imread(img, cv2.IMREAD_COLOR)
+        img = mmcv.imread(img, channel_order='rgb')
     elif isinstance(img, np.ndarray):
-
-        # Convert the img to RGB
-        #img = mmcv.bgr2rgb(img)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
+        img = mmcv.bgr2rgb(img)
 
     if keypoint_score is None:
         keypoint_score = np.ones(keypoints.shape[0])

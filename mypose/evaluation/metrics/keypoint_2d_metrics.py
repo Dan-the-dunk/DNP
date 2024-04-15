@@ -40,7 +40,7 @@ class PCKAccuracy(BaseMetric):
 
     Examples:
 
-        >>> from mypose.evaluation.metrics import PCKAccuracy
+        >>> from mmpose.evaluation.metrics import PCKAccuracy
         >>> import numpy as np
         >>> from mmengine.structures import InstanceData
         >>> num_keypoints = 15

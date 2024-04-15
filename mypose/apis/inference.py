@@ -32,7 +32,7 @@ def dataset_meta_from_config(config: Config,
 
     Returns:
         dict, optional: The dataset metainfo. See
-        ``mypose.datasets.datasets.utils.parse_pose_metainfo`` for details.
+        ``mmpose.datasets.datasets.utils.parse_pose_metainfo`` for details.
         Return ``None`` if failing to get dataset metainfo from the config.
     """
     try:
@@ -96,8 +96,8 @@ def init_model(config: Union[str, Path, Config],
         config.model.backbone.init_cfg = None
     config.model.train_cfg = None
 
-    # register all modules in mypose into the registries
-    scope = config.get('default_scope', 'mypose')
+    # register all modules in mmpose into the registries
+    scope = config.get('default_scope', 'mmpose')
     if scope is not None:
         init_default_scope(scope)
 
@@ -110,7 +110,7 @@ def init_model(config: Union[str, Path, Config],
         ckpt = load_checkpoint(model, checkpoint, map_location='cpu')
 
         if 'dataset_meta' in ckpt.get('meta', {}):
-            # checkpoint from mypose 1.x
+            # checkpoint from mmpose 1.x
             dataset_meta = ckpt['meta']['dataset_meta']
 
     if dataset_meta is None:
@@ -152,7 +152,7 @@ def inference_topdown(model: nn.Module,
         ``data_sample.pred_instances.keypoints`` and
         ``data_sample.pred_instances.keypoint_scores``.
     """
-    scope = model.cfg.get('default_scope', 'mypose')
+    scope = model.cfg.get('default_scope', 'mmpose')
     if scope is not None:
         init_default_scope(scope)
     pipeline = Compose(model.cfg.test_dataloader.dataset.pipeline)

@@ -70,8 +70,8 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
     Examples:
         >>> import numpy as np
         >>> from mmengine.structures import InstanceData
-        >>> from mypose.structures import PoseDataSample
-        >>> from mypose.visualization import PoseLocalVisualizer
+        >>> from mmpose.structures import PoseDataSample
+        >>> from mmpose.visualization import PoseLocalVisualizer
 
         >>> pose_local_visualizer = PoseLocalVisualizer(radius=1)
         >>> image = np.random.randint(0, 256,
@@ -147,7 +147,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
 
     def set_dataset_meta(self,
                          dataset_meta: Dict,
-                         skeleton_style: str = 'mypose'):
+                         skeleton_style: str = 'mmpose'):
         """Assign dataset_meta to the visualizer. The default visualization
         settings will be overridden.
 
@@ -244,7 +244,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
                              instances: InstanceData,
                              kpt_thr: float = 0.3,
                              show_kpt_idx: bool = False,
-                             skeleton_style: str = 'mypose'):
+                             skeleton_style: str = 'mmpose'):
         """Draw keypoints and skeletons (optional) of GT or prediction.
 
         Args:
@@ -256,7 +256,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
             show_kpt_idx (bool): Whether to show the index of keypoints.
                 Defaults to ``False``
             skeleton_style (str): Skeleton style selection. Defaults to
-                ``'mypose'``
+                ``'mmpose'``
 
         Returns:
             np.ndarray: the drawn image which channel is RGB.
@@ -403,10 +403,10 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
                 keypoints_info[:, 6, 2:3] > kpt_thr).astype(int)
             new_keypoints_info = np.insert(keypoints_info, 17, neck, axis=1)
 
-            mypose_idx = [17, 6, 8, 10, 7, 9, 12, 14, 16, 13, 15, 2, 1, 4, 3]
+            mmpose_idx = [17, 6, 8, 10, 7, 9, 12, 14, 16, 13, 15, 2, 1, 4, 3]
             openpose_idx = [1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17]
             new_keypoints_info[:, openpose_idx] = \
-                new_keypoints_info[:, mypose_idx]
+                new_keypoints_info[:, mmpose_idx]
             keypoints_info = new_keypoints_info
 
             keypoints, keypoints_visible = keypoints_info[
@@ -577,7 +577,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
                        draw_heatmap: bool = False,
                        draw_bbox: bool = False,
                        show_kpt_idx: bool = False,
-                       skeleton_style: str = 'mypose',
+                       skeleton_style: str = 'mmpose',
                        show: bool = False,
                        wait_time: float = 0,
                        out_file: Optional[str] = None,
@@ -610,7 +610,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
             show_kpt_idx (bool): Whether to show the index of keypoints.
                 Defaults to ``False``
             skeleton_style (str): Skeleton style selection. Defaults to
-                ``'mypose'``
+                ``'mmpose'``
             show (bool): Whether to display the drawn image. Default to
                 ``False``
             wait_time (float): The interval of show (s). Defaults to 0

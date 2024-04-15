@@ -7,11 +7,14 @@ import cv2
 import numpy as np
 import json
 
-from mmpose.apis import inference_topdown
-from mmpose.apis import init_model as init_pose_estimator
-from mmpose.apis import visualize
+
+from mypose.apis import inference_topdown
+from mypose.apis import init_model as init_pose_estimator
+from mypose.apis import visualize
 from utils import visualize_bbox_and_keypoints
 import base64
+
+from config import *
 
 
 def serialize_pose_results(offset, frame, keypoint, bbox):
@@ -80,22 +83,36 @@ def delivery_callback(err, msg):
                     topic=msg.topic(), offset=msg.  offset()))
 
 class PoseProcess:
-    def __init__(self, frame_topic, bbox_topic, config):
-        self.producer = Producer(config)
+    def __init__(self, frame_topic, bbox_topic, bootstrap_servers=BOOTSTRAP_SERVERS):
         self.frame_topic = frame_topic
         self.bbox_topic = bbox_topic
-        self.consumer = Consumer(config)
+
+        # CONFIG
+        producer_config = {
+            'bootstrap.servers': bootstrap_servers
+        }
+
+        consumer_config = {
+            'bootstrap.servers': bootstrap_servers,
+            'group.id': 'pose',
+            'auto.offset.reset': 'earliest'
+        }
+        
+        self.producer = Producer(producer_config)
+        self.consumer = Consumer(consumer_config)
         self.consumer.subscribe([self.frame_topic, self.bbox_topic], on_assign=self.reset_offset)
         #self.model = YOLO('yolov8n-pose.pt')
 
+        
+
         self.pose_estimator = init_pose_estimator(
-            config='mmpose/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w48_8xb32-210e_coco-256x192.py',
-            checkpoint='mmpose/checkpoints/td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth',
-            device='cpu')
+            config='mypose/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w48_udp-8xb32-210e_coco-256x192.py',
+            checkpoint='mypose/checkpoints/td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth',
+            device='cuda')
 
 
     def reset_offset(self, consumer, partitions):
-        if args.reset:
+        if args_reset:
             for p in partitions:
                 p.offset = OFFSET_BEGINNING
             consumer.assign(partitions)
@@ -200,7 +217,7 @@ class PoseProcess:
                 
 if __name__ == '__main__':
     # Parse the command line.
-    parser = ArgumentParser()
+    """parser = ArgumentParser()
     parser.add_argument('config_file', type=FileType('r'))
     parser.add_argument('--reset', action='store_true')
     args = parser.parse_args()
@@ -211,10 +228,11 @@ if __name__ == '__main__':
     config_parser.read_file(args.config_file)
     config = dict(config_parser['default'])
     config.update(config_parser['consumer'])
-
+"""
+    args_reset = False
     # Create BoundingBoxProcess instance
  
-    bbox = PoseProcess("frames", "bbox", config)
-    bbox.getPose()
+    pose = PoseProcess("frames", "bbox")
+    pose.getPose()
 
    

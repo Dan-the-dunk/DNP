@@ -6,13 +6,21 @@ from configparser import ConfigParser
 from confluent_kafka import Producer
 import time
 
+from config import *
+
 
 class VideoProducer:
-    def __init__(self, topic, video_path, config):
-        self.producer = Producer(config)
+    def __init__(self, topic, video_path, bootstrap_servers=BOOTSTRAP_SERVERS):
+
+        self.producer_config = {
+            'bootstrap.servers': bootstrap_servers
+        }
+        
+        self.producer = Producer(self.producer_config)
         self.topic = topic
         self.video_path = video_path
     
+
     def produce_frame(self):
         def delivery_callback(err, msg):
             if err:
@@ -44,7 +52,7 @@ class VideoProducer:
 
 
 if __name__ == '__main__':
-    # Parse the command line.
+    """# Parse the command line.
     parser = ArgumentParser()
     parser.add_argument('config_file', type=FileType('r'))
     args = parser.parse_args()
@@ -53,10 +61,10 @@ if __name__ == '__main__':
     # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
     config_parser = ConfigParser()
     config_parser.read_file(args.config_file)
-    config = dict(config_parser['default'])
+    config = dict(config_parser['default'])"""
 
     # Create videoProd instance
-    videoProd = VideoProducer("frames", "videos/demo_iai_2.mp4", config)
+    videoProd = VideoProducer("frames", "videos/demo_iai_2.mp4")
 
     videoProd.produce_frame()
 

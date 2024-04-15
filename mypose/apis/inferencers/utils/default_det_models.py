@@ -4,7 +4,8 @@ import os.path as osp
 from mmengine.config.utils import MODULE2PACKAGE
 from mmengine.utils import get_installed_path
 
-mmpose_path = get_installed_path(MODULE2PACKAGE['mmpose'])
+#mmpose_path = get_installed_path(MODULE2PACKAGE['mmpose'])
+mmpose_path = '/home/k66/dnk/dang_dnp/mypose/'
 
 default_det_models = dict(
     human=dict(

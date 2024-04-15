@@ -10,7 +10,7 @@ from PIL import Image
 import json
 from datetime import datetime
 import base64
-
+from config import *
 
 def serialize_tensor(tensor):
     """
@@ -34,10 +34,16 @@ def serialize_tensor(tensor):
 
 
 class SaveResultsProcess:
-    def __init__(self, result_topic, config):
-        self.producer = Producer(config)
+    def __init__(self, result_topic, bootstrap_servers=BOOTSTRAP_SERVERS):
+
+        consumer_config = {
+            'bootstrap.servers': bootstrap_servers,
+            'group.id': 'results',
+            'auto.offset.reset': 'earliest'
+        }
+        
         self.result_topic = result_topic
-        self.consumer = Consumer(config)
+        self.consumer = Consumer(consumer_config)
         self.consumer.subscribe([self.result_topic], on_assign=self.reset_offset)
 
         self.frame_list = []
@@ -48,7 +54,7 @@ class SaveResultsProcess:
         self.video_writer = cv2.VideoWriter(self.output_video, self.fourcc, 10.0, (1280, 720))
  
     def reset_offset(self, consumer, partitions):
-        if args.reset:
+        if args_reset:
             for p in partitions:
                 p.offset = OFFSET_BEGINNING
             consumer.assign(partitions)
@@ -132,12 +138,11 @@ class SaveResultsProcess:
         finally:
             # Leave group and commit final offsets
             print("Closed consumer and producer")
-            self.producer.flush()
             self.consumer.close()
                 
 if __name__ == '__main__':
     # Parse the command line.
-    parser = ArgumentParser()
+    """parser = ArgumentParser()
     parser.add_argument('config_file', type=FileType('r'))
     parser.add_argument('--reset', action='store_true')
     args = parser.parse_args()
@@ -147,12 +152,13 @@ if __name__ == '__main__':
     config_parser = ConfigParser()
     config_parser.read_file(args.config_file)
     config = dict(config_parser['default'])
-    config.update(config_parser['consumer'])
+    config.update(config_parser['consumer'])"""
 
     # Create Save Process instance
  
-    bbox = SaveResultsProcess("results", config)
-    bbox.saveResults()
-    bbox.saveResultsToDisk()
+    args_reset = False
+    res = SaveResultsProcess("results")
+    res.saveResults()
+    res.saveResultsToDisk()
 
    

@@ -43,94 +43,94 @@ RUNNER_CONSTRUCTORS = Registry(
 LOOPS = Registry('loop', parent=MMENGINE_LOOPS)
 # manage all kinds of hooks like `CheckpointHook`
 HOOKS = Registry(
-    'hook', parent=MMENGINE_HOOKS, locations=['mypose.engine.hooks'])
+    'hook', parent=MMENGINE_HOOKS, locations=['mmpose.engine.hooks'])
 
 # Registries For Data and the related
 # manage data-related modules
 DATASETS = Registry(
-    'dataset', parent=MMENGINE_DATASETS, locations=['mypose.datasets'])
+    'dataset', parent=MMENGINE_DATASETS, locations=['mmpose.datasets'])
 DATA_SAMPLERS = Registry(
     'data sampler',
     parent=MMENGINE_DATA_SAMPLERS,
-    locations=['mypose.datasets.samplers'])
+    locations=['mmpose.datasets.samplers'])
 TRANSFORMS = Registry(
     'transform',
     parent=MMENGINE_TRANSFORMS,
-    locations=['mypose.datasets.transforms'])
+    locations=['mmpose.datasets.transforms'])
 
 # manage all kinds of modules inheriting `nn.Module`
-MODELS = Registry('model', parent=MMENGINE_MODELS, locations=['mypose.models'])
+MODELS = Registry('model', parent=MMENGINE_MODELS, locations=['mmpose.models'])
 # manage all kinds of model wrappers like 'MMDistributedDataParallel'
 MODEL_WRAPPERS = Registry(
     'model_wrapper',
     parent=MMENGINE_MODEL_WRAPPERS,
-    locations=['mypose.models'])
+    locations=['mmpose.models'])
 # manage all kinds of weight initialization modules like `Uniform`
 WEIGHT_INITIALIZERS = Registry(
     'weight initializer',
     parent=MMENGINE_WEIGHT_INITIALIZERS,
-    locations=['mypose.models'])
+    locations=['mmpose.models'])
 # manage all kinds of batch augmentations like Mixup and CutMix.
-BATCH_AUGMENTS = Registry('batch augment', locations=['mypose.models'])
+BATCH_AUGMENTS = Registry('batch augment', locations=['mmpose.models'])
 
 # Registries For Optimizer and the related
 # manage all kinds of optimizers like `SGD` and `Adam`
 OPTIMIZERS = Registry(
-    'optimizer', parent=MMENGINE_OPTIMIZERS, locations=['mypose.engine'])
+    'optimizer', parent=MMENGINE_OPTIMIZERS, locations=['mmpose.engine'])
 # manage optimizer wrapper
 OPTIM_WRAPPERS = Registry(
     'optimizer_wrapper',
     parent=MMENGINE_OPTIM_WRAPPERS,
-    locations=['mypose.engine'])
+    locations=['mmpose.engine'])
 # manage constructors that customize the optimization hyperparameters.
 OPTIM_WRAPPER_CONSTRUCTORS = Registry(
     'optimizer wrapper constructor',
     parent=MMENGINE_OPTIM_WRAPPER_CONSTRUCTORS,
-    locations=['mypose.engine.optim_wrappers'])
+    locations=['mmpose.engine.optim_wrappers'])
 # manage all kinds of parameter schedulers like `MultiStepLR`
 PARAM_SCHEDULERS = Registry(
     'parameter scheduler',
     parent=MMENGINE_PARAM_SCHEDULERS,
-    locations=['mypose.engine.schedulers'])
+    locations=['mmpose.engine.schedulers'])
 
 # manage all kinds of metrics
 METRICS = Registry(
-    'metric', parent=MMENGINE_METRICS, locations=['mypose.evaluation.metrics'])
+    'metric', parent=MMENGINE_METRICS, locations=['mmpose.evaluation.metrics'])
 # manage all kinds of evaluators
 EVALUATORS = Registry(
     'evaluator',
     parent=MMENGINE_EVALUATOR,
-    locations=['mypose.evaluation.evaluators'])
+    locations=['mmpose.evaluation.evaluators'])
 
 # manage task-specific modules like anchor generators and box coders
 TASK_UTILS = Registry(
     'task util',
     parent=MMENGINE_TASK_UTILS,
-    locations=['mypose.models.task_modules'])
+    locations=['mmpose.models.task_modules'])
 
 # Registries For Visualizer and the related
 # manage visualizer
 VISUALIZERS = Registry(
     'visualizer',
     parent=MMENGINE_VISUALIZERS,
-    locations=['mypose.visualization'])
+    locations=['mmpose.visualization'])
 # manage visualizer backend
 VISBACKENDS = Registry(
     'vis_backend',
     parent=MMENGINE_VISBACKENDS,
-    locations=['mypose.visualization'])
+    locations=['mmpose.visualization'])
 
 # manage all kinds log processors
 LOG_PROCESSORS = Registry(
     'log processor',
     parent=MMENGINE_LOG_PROCESSORS,
-    locations=['mypose.visualization'])
+    locations=['mmpose.visualization'])
 
 # manager keypoint encoder/decoder
-KEYPOINT_CODECS = Registry('KEYPOINT_CODECS', locations=['mypose.codecs'])
+KEYPOINT_CODECS = Registry('KEYPOINT_CODECS', locations=['mmpose.codecs'])
 
 # manage inferencer
 INFERENCERS = Registry(
     'inferencer',
     parent=MMENGINE_INFERENCERS,
-    locations=['mypose.apis.inferencers'])
+    locations=['mmpose.apis.inferencers'])

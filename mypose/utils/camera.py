@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 
 import numpy as np
 import torch
-from mypose.registry import Registry
+from mmengine.registry import Registry
 
 CAMERAS = Registry('camera')
 

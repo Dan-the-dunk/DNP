@@ -92,11 +92,11 @@ def parse_pose_metainfo(metainfo: dict):
     if 'from_file' in metainfo:
         cfg_file = metainfo['from_file']
         if not osp.isfile(cfg_file):
-            # Search configs in 'mypose/.mim/configs/' in case that mypose
+            # Search configs in 'mmpose/.mim/configs/' in case that mmpose
             # is installed in non-editable mode.
             import mypose
-            mypose_path = osp.dirname(mypose.__file__)
-            _cfg_file = osp.join(mypose_path, '.mim', 'configs', '_base_',
+            mmpose_path = osp.dirname(mypose.__file__)
+            _cfg_file = osp.join(mmpose_path, '.mim', 'configs', '_base_',
                                  'datasets', osp.basename(cfg_file))
             if osp.isfile(_cfg_file):
                 warnings.warn(

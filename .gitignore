@@ -2,3 +2,5 @@
 mmpose/
 videos/
 __pycache__/
+mypose/checkpoints/
+mypose/configs/
