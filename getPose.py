@@ -7,7 +7,6 @@ import cv2
 import numpy as np
 import json
 
-
 from mypose.apis import inference_topdown
 from mypose.apis import init_model as init_pose_estimator
 from mypose.apis import visualize
