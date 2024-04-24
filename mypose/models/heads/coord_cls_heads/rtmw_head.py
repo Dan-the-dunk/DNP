@@ -3,7 +3,7 @@ import warnings
 from typing import Optional, Sequence, Tuple, Union
 
 import torch
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from mmengine.dist import get_dist_info
 from mmengine.structures import PixelData
 from torch import Tensor, nn

@@ -2,7 +2,7 @@
 import copy
 
 import torch.nn as nn
-from mmcv.cnn import ConvModule, build_conv_layer
+from mycv.cnn import ConvModule, build_conv_layer
 from mmengine.model import BaseModule
 
 from mypose.registry import MODELS

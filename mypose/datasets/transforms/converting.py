@@ -2,7 +2,7 @@
 from typing import List, Tuple, Union
 
 import numpy as np
-from mmcv.transforms import BaseTransform
+from mycv.transforms import BaseTransform
 
 from mypose.registry import TRANSFORMS
 

@@ -4,7 +4,7 @@ import copy
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as cp
-from mmcv.cnn import ConvModule, build_activation_layer
+from mycv.cnn import ConvModule, build_activation_layer
 from mmengine.model import BaseModule
 from torch.nn.modules.batchnorm import _BatchNorm
 

@@ -1,6 +1,6 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch.nn as nn
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from mmengine.utils.dl_utils.parrots_wrapper import _BatchNorm
 
 from mypose.registry import MODELS

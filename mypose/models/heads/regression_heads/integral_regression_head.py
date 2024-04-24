@@ -5,7 +5,7 @@ from typing import Optional, Sequence, Tuple, Union
 import numpy as np
 import torch
 import torch.nn.functional as F
-from mmcv.cnn import build_conv_layer
+from mycv.cnn import build_conv_layer
 from mmengine.structures import PixelData
 from torch import Tensor, nn
 

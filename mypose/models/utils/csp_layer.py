@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch
 import torch.nn as nn
-from mmcv.cnn import ConvModule, DepthwiseSeparableConvModule
+from mycv.cnn import ConvModule, DepthwiseSeparableConvModule
 from mmengine.model import BaseModule
 from mmengine.utils import digit_version
 from torch import Tensor

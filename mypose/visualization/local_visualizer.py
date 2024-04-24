@@ -4,7 +4,7 @@ import warnings
 from typing import Dict, List, Optional, Tuple, Union
 
 import cv2
-import mmcv
+import mycv
 import numpy as np
 import torch
 from mmengine.dist import master_only
@@ -692,7 +692,7 @@ class PoseLocalVisualizer(OpencvBackendVisualizer):
             self.show(drawn_img, win_name=name, wait_time=wait_time)
 
         if out_file is not None:
-            mmcv.imwrite(drawn_img[..., ::-1], out_file)
+            mycv.imwrite(drawn_img[..., ::-1], out_file)
         else:
             # save drawn_img to backends
             self.add_image(name, drawn_img, step)

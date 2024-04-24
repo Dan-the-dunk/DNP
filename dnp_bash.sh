@@ -2,8 +2,8 @@
 echo Start the thing 
 
 
-source /home/k66/miniconda3/etc/profile.d/conda.sh
-conda activate dnk_dnp_env
+source /opt/anaconda3/etc/profile.d/conda.sh
+conda activate dnp_dnk
 
 
 # Define list of session names and corresponding Python programs
@@ -20,7 +20,7 @@ sleep 10
 # Loop through each session and program
 for (( i=0; i<${#sessions[@]}; i++ )); do
   tmux new-session -d -s "${sessions[i]}" \; \
-  send-keys "conda activate dnk_dnp_env; python ${programs[i]} && read" C-m
+  send-keys "conda activate dnp_dnk; python ${programs[i]} && read" C-m
   echo "Started session ${sessions[i]} with program ${programs[i]}"
 
 done

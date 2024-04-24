@@ -20,7 +20,6 @@ class VideoProducer:
         self.topic = topic
         self.video_path = video_path
     
-
     def produce_frame(self):
         def delivery_callback(err, msg):
             if err:

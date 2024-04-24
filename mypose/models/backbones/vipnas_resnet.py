@@ -3,8 +3,8 @@ import copy
 
 import torch.nn as nn
 import torch.utils.checkpoint as cp
-from mmcv.cnn import ConvModule, build_conv_layer, build_norm_layer
-from mmcv.cnn.bricks import ContextBlock
+from mycv.cnn import ConvModule, build_conv_layer, build_norm_layer
+from mycv.cnn.bricks import ContextBlock
 from mmengine.model import BaseModule, Sequential
 from mmengine.utils.dl_utils.parrots_wrapper import _BatchNorm
 

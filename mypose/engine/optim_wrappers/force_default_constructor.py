@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from mmengine.logging import print_log
 from mmengine.optim import DefaultOptimWrapperConstructor
-from mmengine.utils.dl_utils import mmcv_full_available
+from mmengine.utils.dl_utils import mycv_full_available
 from mmengine.utils.dl_utils.parrots_wrapper import _BatchNorm, _InstanceNorm
 from torch.nn import GroupNorm, LayerNorm
 

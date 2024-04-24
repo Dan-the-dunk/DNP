@@ -4,7 +4,7 @@ import os
 from collections import defaultdict
 from typing import Dict, List, Optional, Sequence, Tuple, Union
 
-import mmcv
+import mycv
 import numpy as np
 import torch
 from mmengine.config import Config, ConfigDict
@@ -170,7 +170,7 @@ class Hand3DInferencer(BaseMMPoseInferencer):
 
             # get bbox from the image size
             if isinstance(input, str):
-                input = mmcv.imread(input)
+                input = mycv.imread(input)
             h, w = input.shape[:2]
 
             inst['bbox'] = np.array([[0, 0, w, h]], dtype=np.float32)
@@ -298,9 +298,9 @@ class Hand3DInferencer(BaseMMPoseInferencer):
 
         for single_input, pred in zip(inputs, preds):
             if isinstance(single_input, str):
-                img = mmcv.imread(single_input, channel_order='rgb')
+                img = mycv.imread(single_input, channel_order='rgb')
             elif isinstance(single_input, np.ndarray):
-                img = mmcv.bgr2rgb(single_input)
+                img = mycv.bgr2rgb(single_input)
             else:
                 raise ValueError('Unsupported input type: '
                                  f'{type(single_input)}')

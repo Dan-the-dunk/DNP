@@ -5,7 +5,7 @@ from typing import List, Optional, Sequence, Tuple, Union
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from mmengine.model import BaseModule, bias_init_with_prob
 from mmengine.structures import InstanceData
 from torch import Tensor

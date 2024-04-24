@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as cp
-from mmcv.cnn import build_conv_layer, build_norm_layer
+from mycv.cnn import build_conv_layer, build_norm_layer
 from mmengine.model import BaseModule
 
 from mypose.registry import MODELS

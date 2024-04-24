@@ -3,7 +3,7 @@ import math
 
 import torch
 import torch.nn.functional as F
-from mmcv.cnn import Linear
+from mycv.cnn import Linear
 from mmengine.model import BaseModule, ModuleList
 from torch import Tensor
 

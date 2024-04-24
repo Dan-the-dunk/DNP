@@ -2,7 +2,7 @@
 from typing import List, Optional, Union
 
 import cv2
-import mmcv
+import mycv
 import numpy as np
 import torch
 from mmengine.dist import master_only
@@ -129,7 +129,7 @@ class OpencvBackendVisualizer(Visualizer):
                 **kwargs)
         elif self.backend == 'opencv':
             if isinstance(face_colors, str):
-                face_colors = mmcv.color_val(face_colors)[::-1]
+                face_colors = mycv.color_val(face_colors)[::-1]
 
             if alpha == 1.0:
                 self._image = cv2.circle(self._image,
@@ -247,7 +247,7 @@ class OpencvBackendVisualizer(Visualizer):
             if bboxes is not None:
                 bbox_color = bboxes[0]['facecolor']
                 if isinstance(bbox_color, str):
-                    bbox_color = mmcv.color_val(bbox_color)[::-1]
+                    bbox_color = mycv.color_val(bbox_color)[::-1]
 
                 y = y - text_baseline // 2
                 self._image = cv2.rectangle(
@@ -305,7 +305,7 @@ class OpencvBackendVisualizer(Visualizer):
                 **kwargs)
 
         elif self.backend == 'opencv':
-            self._image = mmcv.imshow_bboxes(
+            self._image = mycv.imshow_bboxes(
                 self._image,
                 bboxes,
                 edge_colors,
@@ -359,7 +359,7 @@ class OpencvBackendVisualizer(Visualizer):
 
         elif self.backend == 'opencv':
             if isinstance(colors, str):
-                colors = mmcv.color_val(colors)[::-1]
+                colors = mycv.color_val(colors)[::-1]
             self._image = cv2.line(
                 self._image, (x_datas[0], y_datas[0]),
                 (x_datas[1], y_datas[1]),
@@ -459,7 +459,7 @@ class OpencvBackendVisualizer(Visualizer):
             else:
                 cv2.setWindowTitle(f'{id(self)}', win_name)
             shown_img = self.get_image() if drawn_img is None else drawn_img
-            cv2.imshow(str(id(self)), mmcv.bgr2rgb(shown_img))
+            cv2.imshow(str(id(self)), mycv.bgr2rgb(shown_img))
             cv2.waitKey(int(np.ceil(wait_time * 1000)))
         else:
             raise ValueError(f'got unsupported backend {self.backend}')

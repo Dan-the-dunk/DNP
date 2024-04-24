@@ -2,7 +2,7 @@
 from typing import Optional
 
 import numpy as np
-from mmcv.transforms import LoadImageFromFile
+from mycv.transforms import LoadImageFromFile
 
 from mypose.registry import TRANSFORMS
 

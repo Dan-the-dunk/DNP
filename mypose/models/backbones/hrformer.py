@@ -4,8 +4,8 @@ import math
 
 import torch
 import torch.nn as nn
-from mmcv.cnn import build_activation_layer, build_conv_layer, build_norm_layer
-from mmcv.cnn.bricks.transformer import build_dropout
+from mycv.cnn import build_activation_layer, build_conv_layer, build_norm_layer
+from mycv.cnn.bricks.transformer import build_dropout
 from mmengine.model import BaseModule, trunc_normal_init
 from torch.nn.functional import pad
 

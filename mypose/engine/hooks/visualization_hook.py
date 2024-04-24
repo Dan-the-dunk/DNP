@@ -3,7 +3,7 @@ import os
 import warnings
 from typing import Optional, Sequence
 
-import mmcv
+import mycv
 import mmengine
 import mmengine.fileio as fileio
 from mmengine.hooks import Hook
@@ -96,7 +96,7 @@ class PoseVisualizationHook(Hook):
         # Visualize only the first data
         img_path = data_batch['data_samples'][0].get('img_path')
         img_bytes = fileio.get(img_path, backend_args=self.backend_args)
-        img = mmcv.imfrombytes(img_bytes, channel_order='rgb')
+        img = mycv.imfrombytes(img_bytes, channel_order='rgb')
         data_sample = outputs[0]
 
         # revert the heatmap on the original image
@@ -140,7 +140,7 @@ class PoseVisualizationHook(Hook):
 
             img_path = data_sample.get('img_path')
             img_bytes = fileio.get(img_path, backend_args=self.backend_args)
-            img = mmcv.imfrombytes(img_bytes, channel_order='rgb')
+            img = mycv.imfrombytes(img_bytes, channel_order='rgb')
             data_sample = merge_data_samples([data_sample])
 
             out_file = None

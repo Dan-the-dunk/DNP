@@ -3,7 +3,7 @@ from typing import Dict, Optional, Tuple
 
 import cv2
 import numpy as np
-from mmcv.transforms import BaseTransform
+from mycv.transforms import BaseTransform
 from mmengine import is_seq_of
 
 from mypose.registry import TRANSFORMS

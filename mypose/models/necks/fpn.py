@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from mmengine.model import xavier_init
 
 from mypose.registry import MODELS

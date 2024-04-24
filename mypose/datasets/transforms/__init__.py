@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from .bottomup_transforms import (BottomupGetHeatmapMask, BottomupRandomAffine,
+"""from .bottomup_transforms import (BottomupGetHeatmapMask, BottomupRandomAffine,
                                   BottomupRandomChoiceResize,
-                                  BottomupRandomCrop, BottomupResize)
+                                  BottomupRandomCrop, BottomupResize)"""
 from .common_transforms import (Albumentation, FilterAnnotations,
                                 GenerateTarget, GetBBoxCenterScale,
                                 PhotometricDistortion, RandomBBoxTransform,
@@ -14,7 +14,7 @@ from .mix_img_transforms import Mosaic, YOLOXMixUp
 from .pose3d_transforms import RandomFlipAroundRoot
 from .topdown_transforms import TopdownAffine
 
-__all__ = [
+"""__all__ = [
     'GetBBoxCenterScale', 'RandomBBoxTransform', 'RandomFlip',
     'RandomHalfBody', 'TopdownAffine', 'Albumentation',
     'PhotometricDistortion', 'PackPoseInputs', 'LoadImage',
@@ -22,5 +22,16 @@ __all__ = [
     'GenerateTarget', 'KeypointConverter', 'RandomFlipAroundRoot',
     'FilterAnnotations', 'YOLOXHSVRandomAug', 'YOLOXMixUp', 'Mosaic',
     'BottomupRandomCrop', 'BottomupRandomChoiceResize', 'HandRandomFlip',
+    'SingleHandConverter'
+]
+"""
+
+__all__ = [
+    'GetBBoxCenterScale', 'RandomBBoxTransform', 'RandomFlip',
+    'RandomHalfBody', 'TopdownAffine', 'Albumentation',
+    'PhotometricDistortion', 'PackPoseInputs', 'LoadImage',
+    'GenerateTarget', 'KeypointConverter', 'RandomFlipAroundRoot',
+    'FilterAnnotations', 'YOLOXHSVRandomAug', 'YOLOXMixUp', 'Mosaic',
+    'HandRandomFlip',
     'SingleHandConverter'
 ]

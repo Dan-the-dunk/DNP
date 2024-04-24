@@ -4,7 +4,7 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn.bricks import DropPath
+from mycv.cnn.bricks import DropPath
 from mmengine.utils import digit_version
 from mmengine.utils.dl_utils import TORCH_VERSION
 

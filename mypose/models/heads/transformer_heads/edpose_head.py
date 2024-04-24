@@ -11,7 +11,7 @@ from typing import Dict, List, Tuple
 import numpy as np
 import torch
 import torch.nn.functional as F
-from mmcv.ops import MultiScaleDeformableAttention
+from mycv.ops import MultiScaleDeformableAttention
 from mmengine.model import BaseModule, ModuleList, constant_init
 from mmengine.structures import InstanceData
 from torch import Tensor, nn

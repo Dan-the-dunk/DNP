@@ -2,7 +2,7 @@
 import logging
 from typing import Dict, List, Optional, Sequence, Tuple, Union
 
-import mmcv
+import mycv
 import numpy as np
 import torch
 from mmengine.config import Config, ConfigDict
@@ -197,7 +197,7 @@ class Pose2DInferencer(BaseMMPoseInferencer):
 
                 # get bbox from the image size
                 if isinstance(input, str):
-                    input = mmcv.imread(input)
+                    input = mycv.imread(input)
                 h, w = input.shape[:2]
 
                 inst['bbox'] = np.array([[0, 0, w, h]], dtype=np.float32)

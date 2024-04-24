@@ -5,8 +5,8 @@ from typing import Dict, List, Optional, Sequence, Tuple, Union
 
 import torch
 import torch.nn as nn
-from mmcv.cnn import ConvModule, Scale
-from mmdet.utils import ConfigType, reduce_mean
+from mycv.cnn import ConvModule, Scale
+from mydet.utils import ConfigType, reduce_mean
 from mmengine.model import BaseModule, bias_init_with_prob
 from mmengine.structures import InstanceData
 from torch import Tensor

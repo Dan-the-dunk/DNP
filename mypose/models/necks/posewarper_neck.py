@@ -1,8 +1,8 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-import mmcv
+import mycv
 import torch
 import torch.nn as nn
-from mmcv.cnn import build_conv_layer, build_norm_layer
+from mycv.cnn import build_conv_layer, build_norm_layer
 from mmengine.model import constant_init, normal_init
 from mmengine.utils import digit_version
 from torch.nn.modules.batchnorm import _BatchNorm
@@ -12,7 +12,7 @@ from mypose.registry import MODELS
 from ..backbones.resnet import BasicBlock, Bottleneck
 
 try:
-    from mmcv.ops import DeformConv2d
+    from mycv.ops import DeformConv2d
     has_mmcv_full = True
 except (ImportError, ModuleNotFoundError):
     has_mmcv_full = False

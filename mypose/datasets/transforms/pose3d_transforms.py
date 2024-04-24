@@ -3,7 +3,7 @@ from copy import deepcopy
 from typing import Dict
 
 import numpy as np
-from mmcv.transforms import BaseTransform
+from mycv.transforms import BaseTransform
 
 from mypose.registry import TRANSFORMS
 from mypose.structures.keypoint import flip_keypoints_custom_center

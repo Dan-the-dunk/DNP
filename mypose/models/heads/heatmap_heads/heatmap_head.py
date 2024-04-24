@@ -2,7 +2,7 @@
 from typing import Optional, Sequence, Tuple, Union
 
 import torch
-from mmcv.cnn import build_conv_layer, build_upsample_layer
+from mycv.cnn import build_conv_layer, build_upsample_layer
 from mmengine.structures import PixelData
 from torch import Tensor, nn
 

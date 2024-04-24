@@ -3,7 +3,7 @@ import copy
 from typing import List, Optional, Sequence, Union
 
 import torch
-from mmcv.cnn import (ConvModule, DepthwiseSeparableConvModule, Linear,
+from mycv.cnn import (ConvModule, DepthwiseSeparableConvModule, Linear,
                       build_activation_layer, build_norm_layer)
 from mmengine.structures import PixelData
 from torch import Tensor, nn

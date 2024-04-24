@@ -4,7 +4,7 @@ import copy
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as cp
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from mmengine.model import BaseModule
 
 from mypose.registry import MODELS

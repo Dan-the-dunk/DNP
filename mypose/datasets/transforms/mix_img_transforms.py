@@ -4,9 +4,9 @@ from abc import ABCMeta
 from collections import defaultdict
 from typing import Optional, Sequence, Tuple
 
-import mmcv
+import mycv
 import numpy as np
-from mmcv.transforms import BaseTransform
+from mycv.transforms import BaseTransform
 from mmengine.dataset.base_dataset import Compose
 from numpy import random
 
@@ -216,7 +216,7 @@ class Mosaic(MixImageTransform):
             img = data['img']
             h, w = img.shape[:2]
             scale_ratio = min(img_scale_h / h, img_scale_w / w)
-            img = mmcv.imresize(img,
+            img = mycv.imresize(img,
                                 (int(w * scale_ratio), int(h * scale_ratio)))
 
             # paste
@@ -424,7 +424,7 @@ class YOLOXMixUp(MixImageTransform):
         # Calculate scale ratio and resize aux_img
         scale_ratio = min(self.img_scale[1] / aux_img.shape[0],
                           self.img_scale[0] / aux_img.shape[1])
-        aux_img = mmcv.imresize(aux_img, (int(aux_img.shape[1] * scale_ratio),
+        aux_img = mycv.imresize(aux_img, (int(aux_img.shape[1] * scale_ratio),
                                           int(aux_img.shape[0] * scale_ratio)))
 
         # Set the resized aux_img in the top-left of out_img
@@ -433,7 +433,7 @@ class YOLOXMixUp(MixImageTransform):
         # random rescale
         jit_factor = random.uniform(*self.ratio_range)
         scale_ratio *= jit_factor
-        out_img = mmcv.imresize(out_img, (int(out_img.shape[1] * jit_factor),
+        out_img = mycv.imresize(out_img, (int(out_img.shape[1] * jit_factor),
                                           int(out_img.shape[0] * jit_factor)))
 
         # random flip

@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import ConvModule, MaxPool2d
+from mycv.cnn import ConvModule, MaxPool2d
 from mmengine.model import BaseModule
 from mmengine.runner import load_state_dict
 

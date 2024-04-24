@@ -5,10 +5,10 @@ from typing import Dict, List, Optional, Sequence, Tuple, Union
 import cv2
 import numpy as np
 import xtcocotools.mask as cocomask
-from mmcv.image import imflip_, imresize
-from mmcv.image.geometric import imrescale
-from mmcv.transforms import BaseTransform
-from mmcv.transforms.utils import cache_randomness
+from mycv.image import imflip_, imresize
+from mycv.image.geometric import imrescale
+from mycv.transforms import BaseTransform
+from mycv.transforms.utils import cache_randomness
 from scipy.stats import truncnorm
 
 from mypose.registry import TRANSFORMS

@@ -5,9 +5,9 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import Conv2d, build_activation_layer, build_norm_layer
-from mmcv.cnn.bricks.drop import build_dropout
-from mmcv.cnn.bricks.transformer import MultiheadAttention
+from mycv.cnn import Conv2d, build_activation_layer, build_norm_layer
+from mycv.cnn.bricks.drop import build_dropout
+from mycv.cnn.bricks.transformer import MultiheadAttention
 from mmengine.model import BaseModule, ModuleList, Sequential
 from mmengine.model.weight_init import trunc_normal_
 from mmengine.runner import load_state_dict
@@ -102,7 +102,7 @@ class SpatialReductionAttention(MultiheadAttention):
     """An implementation of Spatial Reduction Attention of PVT.
 
     This module is modified from MultiheadAttention which is a module from
-    mmcv.cnn.bricks.transformer.
+    mycv.cnn.bricks.transformer.
 
     Args:
         embed_dims (int): The embedding dimension.

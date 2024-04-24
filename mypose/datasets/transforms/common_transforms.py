@@ -4,12 +4,12 @@ from copy import deepcopy
 from typing import Dict, List, Optional, Sequence, Tuple, Union
 
 import cv2
-import mmcv
+import mycv
 import mmengine
 import numpy as np
-from mmcv.image import imflip
-from mmcv.transforms import BaseTransform
-from mmcv.transforms.utils import avoid_cache_randomness, cache_randomness
+from mycv.image import imflip
+from mycv.transforms import BaseTransform
+from mycv.transforms.utils import avoid_cache_randomness, cache_randomness
 from mmengine import is_list_of
 from mmengine.dist import get_dist_info
 from scipy.stats import truncnorm
@@ -840,7 +840,7 @@ class PhotometricDistortion(BaseTransform):
 
         if hsv_mode:
             # random saturation/hue distortion
-            img = mmcv.bgr2hsv(img)
+            img = mycv.bgr2hsv(img)
             if hsv_mode == 1 or hsv_mode == 3:
                 # apply saturation distortion to hsv-formatted img
                 img[:, :, 1] = self._convert(
@@ -848,7 +848,7 @@ class PhotometricDistortion(BaseTransform):
             if hsv_mode == 2 or hsv_mode == 3:
                 # apply hue distortion to hsv-formatted img
                 img[:, :, 0] = img[:, :, 0].astype(int) + hue_delta
-            img = mmcv.hsv2bgr(img)
+            img = mycv.hsv2bgr(img)
 
         if contrast_mode == 1:
             if contrast_flag:

@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch
 import torch.nn as nn
-from mmcv.cnn.bricks import DropPath
+from mycv.cnn.bricks import DropPath
 from mmengine.model import BaseModule, constant_init
 from mmengine.model.weight_init import trunc_normal_
 

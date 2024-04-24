@@ -5,9 +5,9 @@ from typing import Optional, Sequence, Union
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import build_conv_layer, build_norm_layer
-from mmcv.cnn.bricks import DropPath
-from mmcv.cnn.bricks.transformer import FFN, MultiheadAttention
+from mycv.cnn import build_conv_layer, build_norm_layer
+from mycv.cnn.bricks import DropPath
+from mycv.cnn.bricks.transformer import FFN, MultiheadAttention
 from mmengine.model import BaseModule, ModuleList
 from mmengine.utils import digit_version, to_2tuple
 from mmengine.utils.dl_utils import TORCH_VERSION

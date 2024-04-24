@@ -3,7 +3,7 @@ import math
 
 import torch
 import torch.nn as nn
-from mmcv.cnn import ConvModule, DepthwiseSeparableConvModule
+from mycv.cnn import ConvModule, DepthwiseSeparableConvModule
 from mmengine.model import BaseModule
 from torch.nn.modules.batchnorm import _BatchNorm
 

@@ -18,4 +18,9 @@ def visualize_bbox_and_keypoints(img, bboxes, keypoints):
     for keypoint in keypoints:
         for i in range(0, len(keypoint)):
             cv2.circle(img, ((keypoint[i])), 3, (0, 255, 0), -1)
+
+        """for j in range(0, len(keypoint) - 1):
+            cv2.line(img, (keypoint[j]), (keypoint[j+1]), (0, 255, 0), 2)"""
+        
+    
     return img

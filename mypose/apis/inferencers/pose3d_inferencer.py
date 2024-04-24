@@ -4,7 +4,7 @@ from collections import defaultdict
 from functools import partial
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 
-import mmcv
+import mycv
 import numpy as np
 import torch
 from mmengine.config import Config, ConfigDict
@@ -411,9 +411,9 @@ class Pose3DInferencer(BaseMMPoseInferencer):
 
         for single_input, pred in zip(inputs, preds):
             if isinstance(single_input, str):
-                img = mmcv.imread(single_input, channel_order='rgb')
+                img = mycv.imread(single_input, channel_order='rgb')
             elif isinstance(single_input, np.ndarray):
-                img = mmcv.bgr2rgb(single_input)
+                img = mycv.bgr2rgb(single_input)
             else:
                 raise ValueError('Unsupported input type: '
                                  f'{type(single_input)}')

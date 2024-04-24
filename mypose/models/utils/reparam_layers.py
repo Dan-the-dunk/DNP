@@ -5,7 +5,7 @@ from typing import Dict, Optional
 import numpy as np
 import torch
 import torch.nn as nn
-from mmcv.cnn import ConvModule, build_activation_layer, build_norm_layer
+from mycv.cnn import ConvModule, build_activation_layer, build_norm_layer
 from mmengine.model import BaseModule
 from torch import Tensor
 

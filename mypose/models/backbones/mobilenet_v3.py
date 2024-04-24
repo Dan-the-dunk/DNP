@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import copy
 
-from mmcv.cnn import ConvModule
+from mycv.cnn import ConvModule
 from torch.nn.modules.batchnorm import _BatchNorm
 
 from mypose.registry import MODELS

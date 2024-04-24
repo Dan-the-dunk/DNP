@@ -1,7 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from typing import Optional, Sequence, Union
 
-from mmcv.cnn import build_conv_layer, build_upsample_layer
+from mycv.cnn import build_conv_layer, build_upsample_layer
 from torch import nn
 
 from mypose.registry import KEYPOINT_CODECS, MODELS

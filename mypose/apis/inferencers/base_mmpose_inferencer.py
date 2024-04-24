@@ -8,7 +8,7 @@ from typing import (Callable, Dict, Generator, Iterable, List, Optional,
                     Sequence, Tuple, Union)
 
 import cv2
-import mmcv
+import mycv
 import mmengine
 import numpy as np
 import torch.nn as nn
@@ -193,7 +193,7 @@ class BaseMMPoseInferencer(BaseInferencer):
                 input_type = mimetypes.guess_type(inputs)[0].split('/')[0]
                 if input_type == 'video':
                     self._video_input = True
-                    video = mmcv.VideoReader(inputs)
+                    video = mycv.VideoReader(inputs)
                     self.video_info = dict(
                         fps=video.fps,
                         name=os.path.basename(inputs),
@@ -505,9 +505,9 @@ class BaseMMPoseInferencer(BaseInferencer):
 
         for single_input, pred in zip(inputs, preds):
             if isinstance(single_input, str):
-                img = mmcv.imread(single_input, channel_order='rgb')
+                img = mycv.imread(single_input, channel_order='rgb')
             elif isinstance(single_input, np.ndarray):
-                img = mmcv.bgr2rgb(single_input)
+                img = mycv.bgr2rgb(single_input)
             else:
                 raise ValueError('Unsupported input type: '
                                  f'{type(single_input)}')
@@ -547,7 +547,7 @@ class BaseMMPoseInferencer(BaseInferencer):
             return []
 
     def save_visualization(self, visualization, vis_out_dir, img_name=None):
-        out_img = mmcv.rgb2bgr(visualization)
+        out_img = mycv.rgb2bgr(visualization)
         _, file_extension = os.path.splitext(vis_out_dir)
         if file_extension:
             dir_name = os.path.dirname(vis_out_dir)
@@ -575,7 +575,7 @@ class BaseMMPoseInferencer(BaseInferencer):
                 file_name = img_name if img_name else 'visualization.jpg'
 
             out_file = join_path(dir_name, file_name)
-            mmcv.imwrite(out_img, out_file)
+            mycv.imwrite(out_img, out_file)
             print_log(
                 f'the output image has been saved at {out_file}',
                 logger='current',

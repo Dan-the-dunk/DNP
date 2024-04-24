@@ -4,7 +4,7 @@ import copy as cp
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.cnn import ConvModule, MaxPool2d
+from mycv.cnn import ConvModule, MaxPool2d
 from mmengine.model import BaseModule
 
 from mypose.registry import MODELS

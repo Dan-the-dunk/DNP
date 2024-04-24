@@ -1,5 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from mmcv.cnn import build_conv_layer, build_norm_layer
+from mycv.cnn import build_conv_layer, build_norm_layer
 
 from mypose.registry import MODELS
 from .resnet import Bottleneck as _Bottleneck

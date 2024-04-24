@@ -2,7 +2,7 @@
 from typing import Sequence, Tuple, Union
 
 import torch
-from mmcv.cnn import (ConvModule, build_activation_layer, build_conv_layer,
+from mycv.cnn import (ConvModule, build_activation_layer, build_conv_layer,
                       build_norm_layer)
 from mmengine.model import BaseModule, ModuleDict, Sequential
 from mmengine.structures import InstanceData, PixelData
